@@ -1,0 +1,33 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Action</th>
+        <th>Result</th> 
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for todo in todos %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{todo.title}}</td>
+        <td>
+          {% if todo.status == 'C'%}
+          Completed
+          {%else%}
+          Pending
+          {%endif%}
+        </td>
+        <td>{{todo.priority}}</td>
+        <td>
+          <a href="/delete-todo/{{todo.id}}" title="Delete" class="btn btn-danger btn-sm">Delete</a>
+          <a href="{% url 'edit_todo' todo.id %}" class="btn btn-primary btn-sm">Edit</a>
+          
+          {%  todo.status == 'P'%}
+          <a href="/change-status/{{todo.id}}/C" title="Mark Completed" class="btn btn-success btn-sm">Complete</a>
+         
