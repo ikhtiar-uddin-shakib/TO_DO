@@ -1,4 +1,8 @@
 from django.contrib import admin
 from app.models import TODO
 # Register your models here.
-admin.site.register(TODO)
+
+class TODOModel(admin.ModelAdmin):
+    list_display = ('title', 'status', 'user', 'due_date')
+    
+admin.site.register(TODO, TODOModel)

@@ -17,8 +17,11 @@ def home(request):
         
         # Sort tasks by priority in ascending order (from lowest to highest priority)
         todos = TODO.objects.filter(user=user).order_by('priority')
-        
         return render(request, 'index.html', context={'form': form, 'todos': todos})
+    
+
+def profile(request):
+    return render(request, 'profile.html')
 
 
 def login(request):
